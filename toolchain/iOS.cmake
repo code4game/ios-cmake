@@ -59,28 +59,28 @@ endif (NOT DEFINED IOS_PLATFORM)
 set (IOS_PLATFORM ${IOS_PLATFORM} CACHE STRING "Type of iOS Platform")
 
 # Check the platform selection and setup for developer root
-if (${IOS_PLATFORM} STREQUAL "OS")
+if ("${IOS_PLATFORM}" STREQUAL "OS")
     set (IOS_PLATFORM_LOCATION "iPhoneOS.platform")
     set (XCODE_IOS_PLATFORM iphoneos)
 
     # This causes the installers to properly locate the output libraries
     set (CMAKE_XCODE_EFFECTIVE_PLATFORMS "-iphoneos")
-elseif (${IOS_PLATFORM} STREQUAL "SIMULATOR")
+elseif ("${IOS_PLATFORM}" STREQUAL "SIMULATOR")
     set (SIMULATOR true)
     set (IOS_PLATFORM_LOCATION "iPhoneSimulator.platform")
     set (XCODE_IOS_PLATFORM iphonesimulator)
 
     # This causes the installers to properly locate the output libraries
     set (CMAKE_XCODE_EFFECTIVE_PLATFORMS "-iphonesimulator")
-elseif (${IOS_PLATFORM} STREQUAL "WATCHOS")
+elseif ("${IOS_PLATFORM}" STREQUAL "WATCHOS")
     set (IOS_PLATFORM_LOCATION "WatchOS.platform")
     set (XCODE_IOS_PLATFORM watchos)
 
     # This causes the installers to properly locate the output libraries
     set (CMAKE_XCODE_EFFECTIVE_PLATFORMS "-watchos")
-else (${IOS_PLATFORM} STREQUAL "OS")
+else ("${IOS_PLATFORM}" STREQUAL "OS")
     message (FATAL_ERROR
-             "Unsupported IOS_PLATFORM value selected. "
+             "Unsupported IOS_PLATFORM(${IOS_PLATFORM}) value selected. "
              "Please choose OS, SIMULATOR, or WATCHOS.")
 endif ()
 
